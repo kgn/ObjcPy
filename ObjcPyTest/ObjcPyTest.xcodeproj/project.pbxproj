@@ -1,0 +1,237 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		73C917E610CE2A3A00A7E928 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		73C917E810CE2A3F00A7E928 /* NSString+PyStr.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C9174310CE28DB00A7E928 /* NSString+PyStr.m */; };
+		73C9183310CE3AD400A7E928 /* TestPyStr.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C9183110CE3AD400A7E928 /* TestPyStr.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		73C9174210CE28DB00A7E928 /* NSString+PyStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PyStr.h"; sourceTree = "<group>"; };
+		73C9174310CE28DB00A7E928 /* NSString+PyStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PyStr.m"; sourceTree = "<group>"; };
+		73C917E210CE2A3300A7E928 /* TestPyStr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TestPyStr; path = build/Debug/TestPyStr; sourceTree = "<group>"; };
+		73C9183010CE3ACD00A7E928 /* TestPyHelper.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = TestPyHelper.py; sourceTree = "<group>"; };
+		73C9183110CE3AD400A7E928 /* TestPyStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPyStr.m; sourceTree = "<group>"; };
+		73C9183210CE3AD400A7E928 /* TestPyStr.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = TestPyStr.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		73C917E010CE2A3300A7E928 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73C917E610CE2A3A00A7E928 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* ObjcPyTest */ = {
+			isa = PBXGroup;
+			children = (
+				73C9180110CE2CD600A7E928 /* Tests */,
+				73C9174110CE28DB00A7E928 /* ObjcPy */,
+				08FB779DFE84155DC02AAC07 /* Frameworks */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = ObjcPyTest;
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73C917E210CE2A3300A7E928 /* TestPyStr */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		73C9174110CE28DB00A7E928 /* ObjcPy */ = {
+			isa = PBXGroup;
+			children = (
+				73C9174210CE28DB00A7E928 /* NSString+PyStr.h */,
+				73C9174310CE28DB00A7E928 /* NSString+PyStr.m */,
+			);
+			name = ObjcPy;
+			path = ../ObjcPy;
+			sourceTree = SOURCE_ROOT;
+		};
+		73C9180110CE2CD600A7E928 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				73C9183010CE3ACD00A7E928 /* TestPyHelper.py */,
+				73C9182C10CE3ABE00A7E928 /* PyStr */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		73C9182C10CE3ABE00A7E928 /* PyStr */ = {
+			isa = PBXGroup;
+			children = (
+				73C9183110CE3AD400A7E928 /* TestPyStr.m */,
+				73C9183210CE3AD400A7E928 /* TestPyStr.py */,
+			);
+			name = PyStr;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		73C917E110CE2A3300A7E928 /* TestPyStr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73C917E910CE2A5D00A7E928 /* Build configuration list for PBXNativeTarget "TestPyStr" */;
+			buildPhases = (
+				73C917DF10CE2A3300A7E928 /* Sources */,
+				73C917E010CE2A3300A7E928 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestPyStr;
+			productName = TestPyStr;
+			productReference = 73C917E210CE2A3300A7E928 /* TestPyStr */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "ObjcPyTest" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* ObjcPyTest */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				73C917E110CE2A3300A7E928 /* TestPyStr */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73C917DF10CE2A3300A7E928 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73C917E810CE2A3F00A7E928 /* NSString+PyStr.m in Sources */,
+				73C9183310CE3AD400A7E928 /* TestPyStr.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		73C917E410CE2A3400A7E928 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestPyStr;
+			};
+			name = Debug;
+		};
+		73C917E510CE2A3400A7E928 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TestPyStr;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "ObjcPyTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73C917E910CE2A5D00A7E928 /* Build configuration list for PBXNativeTarget "TestPyStr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73C917E410CE2A3400A7E928 /* Debug */,
+				73C917E510CE2A3400A7E928 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
