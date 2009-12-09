@@ -192,20 +192,15 @@ BOOL blankString(NSString *string){
         return self;
     }
     
-    NSUInteger substringIndex = [self length];
     if([chars isKindOfClass:[NSString class]]){
         if(blankString(chars)){
             return self;
         }
         
-        NSUInteger charLength = [chars length];
-        for(substringIndex; substringIndex>0; substringIndex-=charLength){
-            NSInteger subStringStart = substringIndex-charLength;
-            if((subStringStart <= 0) || ![chars isEqualToString:[self substringWithRange:NSMakeRange(subStringStart, charLength)]]){
-                break;
-            }
+        NSRange charRange = [self rangeOfString:chars options:(NSBackwardsSearch+NSAnchoredSearch)];
+        if(charRange.location != NSNotFound){
+            return [self substringToIndex:charRange.location];
         }
-        return [self substringToIndex:substringIndex];
     }
     else if([chars isKindOfClass:[NSCharacterSet class]]){
         NSRange charRange = [self rangeOfCharacterFromSet:chars options:(NSBackwardsSearch+NSAnchoredSearch)];
