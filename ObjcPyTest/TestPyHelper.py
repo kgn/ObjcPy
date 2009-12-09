@@ -1,7 +1,6 @@
 import os, subprocess
 
-#TODO: make this dynamic, passed in from xcode or something
-root = '/Users/dkeegan/dev/mercurial/library/ObjcPy/ObjcPyTest/build/Debug'
+root = os.path.join(os.path.dirname(__file__), 'build','Debug')
 
 class TestPyError(Exception):
     def __init__(self, command, stderr):
