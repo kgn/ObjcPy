@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString(ISPyStr)
+@interface NSString(PyStr)
 
 //TODO: count(should this be implemented, count is used for arrays and length for strings in objc)
 //TODO: decode

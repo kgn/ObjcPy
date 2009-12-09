@@ -8,7 +8,7 @@
 
 #import "NSString+PyStr.h"
 
-@implementation NSString(ISPyStr)
+@implementation NSString(PyStr)
 
 BOOL blankString(NSString *string){
     return ([string length] == 0);
