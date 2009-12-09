@@ -90,11 +90,11 @@ BOOL blankString(NSString *string){
 }
 
 - (NSString *)capitalize{
-    if(blankString(self)){
+    if(!blankString(self)){
         NSString *firstLetterCapitalized = [[self substringToIndex:1] upper];
         return [[self lower] stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:firstLetterCapitalized];
     }
-    return @"";
+    return self;
 }
 
 - (NSString *)title{
@@ -156,9 +156,10 @@ BOOL blankString(NSString *string){
 
 - (NSArray *)splitlines{
     //TODO: support keepends
+    //TODO: this method does not fully match up with the python logic
     NSString *newlineOnly = [self replace:@"\r\n" with:@"\r"];
     newlineOnly = [newlineOnly replace:@"\r" with:@"\n"];
-    return [[newlineOnly rstrip] split:@"\n"];
+    return [[newlineOnly rstrip:[NSCharacterSet newlineCharacterSet]] split:@"\n"];
 }
 
 - (NSArray *)split:(NSString *)splitString{
@@ -171,17 +172,14 @@ BOOL blankString(NSString *string){
 }
 
 - (NSString *)lstrip{
-    return [self lstrip:@"\n"];
+    return [self lstrip:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 - (NSString *)rstrip{
     return [self rstrip:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSString *)lstrip:(NSString *)chars{
-    if(blankString(self) || blankString(chars)){
-        return self;
-    }
+- (NSString *)lstrip:(id)chars{
     return self;
 }
 
@@ -192,21 +190,29 @@ BOOL blankString(NSString *string){
         return self;
     }
     
+    NSUInteger substringIndex = [self length];
     if([chars isKindOfClass:[NSString class]]){
         if(blankString(chars)){
             return self;
         }
         
-        NSRange charRange = [self rangeOfString:chars options:(NSBackwardsSearch+NSAnchoredSearch)];
-        if(charRange.location != NSNotFound){
-            return [self substringToIndex:charRange.location];
+        NSUInteger charLength = [chars length];
+        for(substringIndex; substringIndex>0; substringIndex-=charLength){
+            NSInteger subStringStart = substringIndex-charLength;
+            if((subStringStart <= 0) || ![chars isEqualToString:[self substringWithRange:NSMakeRange(subStringStart, charLength)]]){
+                break;
+            }
         }
+        return [self substringToIndex:substringIndex];
     }
     else if([chars isKindOfClass:[NSCharacterSet class]]){
-        NSRange charRange = [self rangeOfCharacterFromSet:chars options:(NSBackwardsSearch+NSAnchoredSearch)];
-        if(charRange.location != NSNotFound){
-            return [self substringToIndex:charRange.location];
+        for(substringIndex; substringIndex>0; substringIndex--){
+            NSInteger subStringStart = substringIndex-1;
+            if(![chars characterIsMember:[self characterAtIndex:subStringStart]]){
+                break;
+            }
         }
+        return [self substringToIndex:substringIndex];
     }
     
     return self;

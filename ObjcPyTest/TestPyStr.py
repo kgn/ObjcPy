@@ -8,10 +8,10 @@ class testCenter(unittest.TestCase):
         value, center, fillchar = input
         if fillchar != None:
             pyResult = value.center(center, fillchar)
-            args = '-value "%s" -center %d -fillchar "%s"' % (value, center, fillchar)
+            args = '-value "%s" -center %d -fillchar "%s"' % (TestPyHelper.encodeString(value), center, TestPyHelper.encodeString(fillchar))
         else:
             pyResult = value.center(center)
-            args = '-value "%s" -center %d' % (value, center)
+            args = '-value "%s" -center %d' % (TestPyHelper.encodeString(value), center)
         self.assertEqual(str(TestPyHelper.runCommand(command, args)), pyResult)
     
     def test_a_2_star(self):
@@ -45,7 +45,7 @@ class testEndswith(unittest.TestCase):
     def runAssert(self, *input):
         value, endswith = input
         pyResult = value.endswith(endswith)
-        args = '-value "%s" -endswith "%s"' % (value, endswith)
+        args = '-value "%s" -endswith "%s"' % (TestPyHelper.encodeString(value), TestPyHelper.encodeString(endswith))
         self.assertEqual(int(TestPyHelper.runCommand(command, args)), pyResult)
     
     def test_TheBook_Book(self):
@@ -70,7 +70,7 @@ class testStartswith(unittest.TestCase):
     def runAssert(self, *input):
         value, startswith = input
         pyResult = value.startswith(startswith)
-        args = '-value "%s" -startswith "%s"' % (value, startswith)
+        args = '-value "%s" -startswith "%s"' % (TestPyHelper.encodeString(value), TestPyHelper.encodeString(startswith))
         self.assertEqual(int(TestPyHelper.runCommand(command, args)), pyResult)
     
     def test_TheBook_The(self):
@@ -94,7 +94,7 @@ class testStartswith(unittest.TestCase):
 class testUpper(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.upper()
-        args = '-upper "%s"' % input
+        args = '-upper "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
     
     def test_TheBook(self):
@@ -112,7 +112,7 @@ class testUpper(unittest.TestCase):
 class testIsupper(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.isupper()
-        args = '-isupper "%s"' % input
+        args = '-isupper "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(int(TestPyHelper.runCommand(command, args)), pyResult)
     
     def test_CamelCase(self):
@@ -130,7 +130,7 @@ class testIsupper(unittest.TestCase):
 class testLower(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.lower()
-        args = '-lower "%s"' % input
+        args = '-lower "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
     
     def test_BigTEXT(self):
@@ -148,7 +148,7 @@ class testLower(unittest.TestCase):
 class testIslower(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.islower()
-        args = '-islower "%s"' % input
+        args = '-islower "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(int(TestPyHelper.runCommand(command, args)), pyResult)
         
     def test_CamelCase(self):
@@ -166,7 +166,7 @@ class testIslower(unittest.TestCase):
 class testTitle(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.title()
-        args = '-title "%s"' % input
+        args = '-title "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_makeMEintoaTitle(self):
@@ -181,7 +181,7 @@ class testTitle(unittest.TestCase):
 class testIstitle(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.istitle()
-        args = '-istitle "%s"' % input
+        args = '-istitle "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(int(TestPyHelper.runCommand(command, args)), pyResult)
         
     def test_alllower(self):
@@ -196,7 +196,7 @@ class testIstitle(unittest.TestCase):
 class testCapitalize(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.capitalize()
-        args = '-capitalize "%s"' % input
+        args = '-capitalize "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_leadingSpace(self):
@@ -211,7 +211,7 @@ class testCapitalize(unittest.TestCase):
 class testJoin(unittest.TestCase):
     def runAssert(self, joinStr, input):
         pyResult = joinStr.join(input)
-        args = '-join "%s" -value "%s"' % (':'.join(input), joinStr)
+        args = '-join "%s" -value "%s"' % (TestPyHelper.encodeString(':'.join(input)), TestPyHelper.encodeString(joinStr))
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_comma_items(self):
@@ -233,7 +233,7 @@ class testReplace(unittest.TestCase):
     def runAssert(self, *input):
         search, replace, value = input
         pyResult = value.replace(search, replace)
-        args = '-search "%s" -replace "%s" -value "%s"' % (search, replace, value)
+        args = '-search "%s" -replace "%s" -value "%s"' % (TestPyHelper.encodeString(search), TestPyHelper.encodeString(replace), TestPyHelper.encodeString(value))
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_A_star_ABACADA(self):
@@ -243,7 +243,7 @@ class testReplace(unittest.TestCase):
         self.runAssert('', '*', 'ABCDEF')
         
     def test__colon_star(self):
-        self.runAssert(':', '*', ':::ab::::')
+        self.runAssert(' ', '*', '   ab    ')
         
     def test__star_(self):
         self.runAssert('', '*', '')
@@ -258,11 +258,14 @@ class testSplit(unittest.TestCase):
     def runAssert(self, *input):
         splitString, value = input
         pyResult = ':'.join(value.split(splitString))
-        args = '-split "%s" -value "%s"' % (splitString, value)
+        args = '-split "%s" -value "%s"' % (TestPyHelper.encodeString(splitString), TestPyHelper.encodeString(value))
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_splitOnDots(self):
         self.runAssert('.', 'split.this..on.dots')
+        
+    def test_splitThisSentance(self):
+        self.runAssert(' ', 'split this sentance')
         
     def test_splitOnA(self):
         self.runAssert('a', 'howdy partner')
@@ -273,7 +276,7 @@ class testSplit(unittest.TestCase):
 class testStrip(unittest.TestCase):
     def runAssert(self, input):
         pyResult = input.strip()
-        args = '-strip "%s"' % input
+        args = '-strip "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_howdyPartner(self):
@@ -282,10 +285,101 @@ class testStrip(unittest.TestCase):
     def test_a(self):
         self.runAssert('a')
         
+    def test_space(self):
+        self.runAssert(' ')
+        
+    def test_(self):
+        self.runAssert('')
+        
+class testRstrip(unittest.TestCase):
+    def runAssert(self, *input):
+        value, chars = input
+        if chars != None:
+            pyResult = value.rstrip(chars)
+            args = '-rstrip "%s" -chars "%s"' % (TestPyHelper.encodeString(value), TestPyHelper.encodeString(chars))
+        else:
+            pyResult = value.rstrip()
+            args = '-rstrip "%s"' % TestPyHelper.encodeString(value)
+        self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
+        
+    def test_filetxt(self):
+        self.runAssert('file.txt', '.txt')
+        
+    def test_longtxtfile12txt_txt(self):
+        self.runAssert('longtxtfile12.txt', '.txt')
+        
+    def test_longtxtfile12txt_ma(self):
+        self.runAssert('longtxtfile12.txt', '.ma')
+        
+    def test_abcdcd_cd(self):
+        self.runAssert('abcdecde', 'cde')
+        
+    def test_abcd(self):
+        self.runAssert('abcd', None)
+        
+    def test_hij_(self):
+        self.runAssert('hij   ', None)
+        
+    def test_newline_(self):
+        self.runAssert('abc \n', None)
+        
+    def test_creturn_(self):
+        self.runAssert('abc   \r', None)
+        
+    def test_newline2_(self):
+        self.runAssert('abc \n\n', None)
+        
+    def test_creturn2_(self):
+        self.runAssert('abc  \r\r', None)
+        
+    def test_mixed_(self):
+        self.runAssert('abc \r\n\n\r', None)
+        
+    def test_abc_(self):
+        self.runAssert('abc', '')
+        
+    def test__abc(self):
+        self.runAssert('', 'abc')
+    
+    def test__(self):
+        self.runAssert('', '')
+        
+#class testLstrip(unittest.TestCase):
+#    def runAssert(self, *input):
+#        value, chars = input
+#        if chars != None:
+#            pyResult = value.lstrip(chars)
+#            args = '-rstrip "%s" -chars "%s"' % (TestPyHelper.encodeString(value), TestPyHelper.encodeString(chars))
+#        else:
+#            pyResult = value.lstrip()
+#            args = '-rstrip "%s"' % TestPyHelper.encodeString(value)
+#        self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
+#        
+#    def test_filetxt(self):
+#        self.runAssert('file.txt', '.txt')
+#        
+#    def test_heythere_hey(self):
+#        self.runAssert('hey there', 'hey')
+#        
+#    def test_heythere_hee(self):
+#        self.runAssert('hey there', 'he')
+#        
+#    def test_abcdcd_ab(self):
+#        self.runAssert('abcdecde', 'ab')
+#        
+#    def test_abc_(self):
+#        self.runAssert('abc', '')
+#        
+#    def test__abc(self):
+#        self.runAssert('', 'abc')
+#    
+#    def test__(self):
+#        self.runAssert('', '')
+        
 class testSplitlines(unittest.TestCase):
     def runAssert(self, input):
         pyResult = ':'.join(input.splitlines())
-        args = '-splitlines "%s"' % input
+        args = '-splitlines "%s"' % TestPyHelper.encodeString(input)
         self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
         
     def test_howdyPartner(self):
@@ -305,6 +399,9 @@ class testSplitlines(unittest.TestCase):
         
     def test_creturn_end(self):
         self.runAssert('item1\rirem2\ritem3\r')
+#TODO: figure out how to get this test to pass
+#    def test_mixed_end(self):
+#        self.runAssert('item1\rirem2\ritem3\r\n\n\r')
         
     def test_newline_start(self):
         self.runAssert('\nitem1\nirem2\nitem3')

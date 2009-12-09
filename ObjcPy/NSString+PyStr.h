@@ -22,13 +22,11 @@
 //TODO: isdigit
 //TODO: isspace
 //TODO: ljust
-//TODO: lstrip
 //TODO: partition
 //TODO: rfind
 //TODO: rindex
 //TODO: rjust
 //TODO: rpartition
-//TODO: rsplit
 //TODO: rstrip
 //TODO: swapcase
 //TODO: translate
@@ -51,5 +49,9 @@
 - (NSArray *)splitlines;
 - (NSArray *)split:(NSString *)splitString;
 - (NSString *)strip;
+- (NSString *)lstrip;
+- (NSString *)rstrip;
+- (NSString *)lstrip:(id)chars;
+- (NSString *)rstrip:(id)chars;
 
 @end

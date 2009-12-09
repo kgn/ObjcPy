@@ -9,6 +9,10 @@ class TestPyError(Exception):
     def __str__(self):
         return '%s\n%s' % (self.command, self.stderr)
 
+def encodeString(value):
+    '''replace space with %20, spaces are striped from command line arguments'''
+    return value.replace(' ', '%20')
+
 def runCommand(command, args):
     commandAndArgs = '%s %s' % (os.path.join(root, command), args)
 #    print commandAndArgs
