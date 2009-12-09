@@ -16,7 +16,7 @@
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		73C9174210CE28DB00A7E928 /* NSString+PyStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PyStr.h"; sourceTree = "<group>"; };
 		73C9174310CE28DB00A7E928 /* NSString+PyStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PyStr.m"; sourceTree = "<group>"; };
-		73C917E210CE2A3300A7E928 /* TestPyStr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TestPyStr; path = build/Debug/TestPyStr; sourceTree = "<group>"; };
+		73C917E210CE2A3300A7E928 /* TestPyStr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPyStr; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C9183010CE3ACD00A7E928 /* TestPyHelper.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = TestPyHelper.py; sourceTree = "<group>"; };
 		73C9183110CE3AD400A7E928 /* TestPyStr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPyStr.m; sourceTree = "<group>"; };
 		73C9183210CE3AD400A7E928 /* TestPyStr.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = TestPyStr.py; sourceTree = "<group>"; };
@@ -98,6 +98,7 @@
 			buildPhases = (
 				73C917DF10CE2A3300A7E928 /* Sources */,
 				73C917E010CE2A3300A7E928 /* Frameworks */,
+				73078BE710CF5CAF00AC1EC5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -124,6 +125,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73078BE710CF5CAF00AC1EC5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script_file=\"TestPyStr.py\"\npython ${PROJECT_DIR}/${script_file}\nscriptExitStatus=$?\nexit \"${scriptExitStatus}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		73C917DF10CE2A3300A7E928 /* Sources */ = {
@@ -152,18 +169,6 @@
 			};
 			name = Debug;
 		};
-		1DEB927A08733DD40010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
-			};
-			name = Release;
-		};
 		73C917E410CE2A3400A7E928 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -187,29 +192,6 @@
 			};
 			name = Debug;
 		};
-		73C917E510CE2A3400A7E928 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = TestPyStr;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -217,19 +199,17 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB927908733DD40010E9CD /* Debug */,
-				1DEB927A08733DD40010E9CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		73C917E910CE2A5D00A7E928 /* Build configuration list for PBXNativeTarget "TestPyStr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				73C917E410CE2A3400A7E928 /* Debug */,
-				73C917E510CE2A3400A7E928 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
