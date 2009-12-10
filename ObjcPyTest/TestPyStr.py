@@ -344,37 +344,58 @@ class testRstrip(unittest.TestCase):
     def test__(self):
         self.runAssert('', '')
         
-#class testLstrip(unittest.TestCase):
-#    def runAssert(self, *input):
-#        value, chars = input
-#        if chars != None:
-#            pyResult = value.lstrip(chars)
-#            args = '-rstrip "%s" -chars "%s"' % (TestPyHelper.encodeString(value), TestPyHelper.encodeString(chars))
-#        else:
-#            pyResult = value.lstrip()
-#            args = '-rstrip "%s"' % TestPyHelper.encodeString(value)
-#        self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
-#        
-#    def test_filetxt(self):
-#        self.runAssert('file.txt', '.txt')
-#        
-#    def test_heythere_hey(self):
-#        self.runAssert('hey there', 'hey')
-#        
-#    def test_heythere_hee(self):
-#        self.runAssert('hey there', 'he')
-#        
-#    def test_abcdcd_ab(self):
-#        self.runAssert('abcdecde', 'ab')
-#        
-#    def test_abc_(self):
-#        self.runAssert('abc', '')
-#        
-#    def test__abc(self):
-#        self.runAssert('', 'abc')
-#    
-#    def test__(self):
-#        self.runAssert('', '')
+class testLstrip(unittest.TestCase):
+    def runAssert(self, *input):
+        value, chars = input
+        if chars != None:
+            pyResult = value.lstrip(chars)
+            args = '-lstrip "%s" -chars "%s"' % (TestPyHelper.encodeString(value), TestPyHelper.encodeString(chars))
+        else:
+            pyResult = value.lstrip()
+            args = '-lstrip "%s"' % TestPyHelper.encodeString(value)
+        self.assertEqual(TestPyHelper.runCommand(command, args), pyResult)
+        
+    def test_filetxt(self):
+        self.runAssert('file.txt', '.txt')
+        
+    def test_heythere_hey(self):
+        self.runAssert('hey there', 'hey')
+        
+    def test_heythere_hee(self):
+        self.runAssert('hey there', 'he')
+        
+    def test_abcdcd_ab(self):
+        self.runAssert('abcdecde', 'ab')
+        
+    def test_abcd(self):
+        self.runAssert('abcd', None)
+        
+    def test_hij_(self):
+        self.runAssert('   hij', None)
+        
+    def test_newline_(self):
+        self.runAssert(' \n abc', None)
+        
+    def test_creturn_(self):
+        self.runAssert('\r  abc', None)
+        
+    def test_newline2_(self):
+        self.runAssert('\n\n  abc', None)
+        
+    def test_creturn2_(self):
+        self.runAssert('  \r\r abc', None)
+        
+    def test_mixed_(self):
+        self.runAssert('\r\n\n\r  abc', None)
+        
+    def test_abc_(self):
+        self.runAssert('abc', '')
+        
+    def test__abc(self):
+        self.runAssert('', 'abc')
+    
+    def test__(self):
+        self.runAssert('', '')
         
 class testSplitlines(unittest.TestCase):
     def runAssert(self, input):

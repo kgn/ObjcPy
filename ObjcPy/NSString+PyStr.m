@@ -180,6 +180,35 @@ BOOL blankString(NSString *string){
 }
 
 - (NSString *)lstrip:(id)chars{
+    //chars can be a string or a character set
+    
+    if(blankString(self)){
+        return self;
+    }
+    
+    NSUInteger substringIndex = 0;
+    if([chars isKindOfClass:[NSString class]]){
+        if(blankString(chars)){
+            return self;
+        }
+        
+        NSUInteger charLength = [chars length];
+        for(substringIndex; substringIndex<[self length]; substringIndex+=charLength){
+            if(![chars isEqualToString:[self substringWithRange:NSMakeRange(substringIndex, charLength)]]){
+                break;
+            }
+        }
+        return[self substringWithRange:NSMakeRange(substringIndex, [self length]-substringIndex)];
+    }
+    else if([chars isKindOfClass:[NSCharacterSet class]]){
+        for(substringIndex; substringIndex<[self length]; substringIndex++){
+            if(![chars characterIsMember:[self characterAtIndex:substringIndex]]){
+                break;
+            }
+        }
+        return[self substringWithRange:NSMakeRange(substringIndex, [self length]-substringIndex)];
+    }
+    
     return self;
 }
 
