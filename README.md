@@ -27,4 +27,4 @@ ObjcPyTest
 --------
 ObjcPyTest is an xcode project for building command line applications for ObjcPy that allow it to be tested with pythons unittesting. This testing method guarantees that the results matchup between python and ObjcPy.
 
-ObjcPy is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php), read the license file for more licensing information.
+ObjcPy is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php), read the [license file](https://github.com/InScopeApps/ObjcPy/blob/master/LICENSE) for more licensing information.
