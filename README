@@ -1,9 +1,0 @@
-ObjcPy provides python style functions in objective-c. Currently only functions from the python string class have been implemented.
-
-ObjcPyTest is an xcode project for building command line applications for ObjcPy that allow it to be tested with pythons unittesting. 
-This testing method guarantees that the results matchup between python and ObjcPy.
-
-ObjcPy is distributed under the MIT License, read the license file for more licensing information.
-
-By:
-David Keegan
